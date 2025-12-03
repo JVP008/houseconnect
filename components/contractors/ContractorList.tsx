@@ -178,7 +178,8 @@ export default function ContractorList({ initialContractors }: ContractorListPro
                         value={bookingDate}
                         onChange={(e) => setBookingDate(e.target.value)}
                         min={new Date().toISOString().split('T')[0]}
-                        className="w-full p-3 border border-gray-300 rounded-lg"
+                        className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 bg-white"
+                        style={{ colorScheme: 'light' }}
                     />
                 </div>
 

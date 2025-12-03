@@ -7,8 +7,8 @@ export default function Stats() {
     const [stats, setStats] = useState({
         contractors: 0,
         jobs: 0,
-        rating: 4.8, // Default/Average
-        satisfaction: 98 // Default
+        rating: 0,
+        satisfaction: 0
     });
 
     useEffect(() => {
@@ -24,8 +24,8 @@ export default function Stats() {
             setStats({
                 contractors: contractorCount || 0,
                 jobs: jobCount || 0,
-                rating: avgRating || 4.8,
-                satisfaction: 98 // Placeholder as we don't have a specific metric for this yet
+                rating: avgRating || 0,
+                satisfaction: 0 // No metric yet
             });
         };
         fetchStats();

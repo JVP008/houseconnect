@@ -2,6 +2,7 @@
 
 import { useState, Suspense, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { useToast } from '@/components/ui/Toast';
 import { supabase } from '@/lib/supabaseClient';
 import Modal from '@/components/ui/Modal';
@@ -146,6 +147,7 @@ function PostJobContent() {
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-12">
+            <Link href="/" className="text-blue-600 hover:underline mb-4 inline-block">&larr; Back to Home</Link>
             <div className="bg-white rounded-2xl shadow-xl p-8">
                 <div className="flex items-center mb-8">
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">

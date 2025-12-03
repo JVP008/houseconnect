@@ -7,8 +7,8 @@ export default function Services() {
     const router = useRouter();
 
     const handleServiceClick = (service: string) => {
-        // Navigate to post-job with service pre-selected (can be done via query param)
-        router.push(`/post-job?service=${service}`);
+        // Navigate to contractors list with service filter
+        router.push(`/contractors?service=${service.toLowerCase()}`);
     };
 
     const services = [

@@ -91,16 +91,4 @@ CREATE POLICY "Users can view own disputes" ON disputes FOR SELECT USING (auth.u
 CREATE POLICY "Users can insert own disputes" ON disputes FOR INSERT WITH CHECK (auth.uid() = user_id);
 
 -- SEED DATA FOR CONTRACTORS
-INSERT INTO contractors (name, service, rating, reviews, price, image, available, verified, location, response_time, completed_jobs, description) VALUES
-('Mike''s Plumbing', 'Plumbing', 4.9, 234, '$75-150/hr', '👨‍🔧', true, true, '2.3 miles', 'Usually responds in 1 hour', 456, 'Licensed master plumber with 15+ years experience'),
-('Sarah Electric Co', 'Electrical', 4.8, 189, '$80-160/hr', '👩‍🔧', true, true, '3.1 miles', 'Usually responds in 2 hours', 312, 'Certified electrician, residential and commercial'),
-('CleanSweep Pro', 'Cleaning', 4.7, 567, '$40-80/hr', '🧹', true, true, '1.5 miles', 'Usually responds in 30 mins', 892, 'Deep cleaning specialists, eco-friendly products'),
-('CoolAir HVAC', 'HVAC', 4.9, 145, '$90-200/hr', '❄️', false, true, '4.2 miles', 'Usually responds in 3 hours', 234, 'HVAC installation, repair, and maintenance'),
-('ColorPro Painters', 'Painting', 4.6, 298, '$50-100/hr', '🎨', true, false, '2.8 miles', 'Usually responds in 2 hours', 445, 'Interior and exterior painting, quality guaranteed'),
-('Green Thumb Gardens', 'Landscaping', 4.8, 176, '$60-120/hr', '🌳', true, true, '5.0 miles', 'Usually responds in 4 hours', 289, 'Full landscaping services, lawn care, design'),
-('Quick Fix Plumbing', 'Plumbing', 4.5, 98, '$65-130/hr', '🔧', true, false, '1.8 miles', 'Usually responds in 1 hour', 156, 'Emergency plumbing services 24/7'),
-('Bright Spark Electric', 'Electrical', 4.7, 212, '$85-170/hr', '⚡', true, true, '3.5 miles', 'Usually responds in 2 hours', 378, 'Smart home installations, rewiring, repairs'),
-('Spotless Cleaning Co', 'Cleaning', 4.9, 423, '$35-70/hr', '✨', false, true, '2.0 miles', 'Usually responds in 1 hour', 712, 'Move-in/out cleaning, regular maintenance'),
-('Arctic Comfort HVAC', 'HVAC', 4.4, 87, '$85-180/hr', '🌡️', true, false, '6.1 miles', 'Usually responds in 5 hours', 143, 'Heating and cooling system experts'),
-('Perfect Finish Painters', 'Painting', 4.8, 334, '$55-110/hr', '🖌️', true, true, '3.3 miles', 'Usually responds in 3 hours', 567, 'Premium paint jobs, wallpaper, texturing'),
-('Nature''s Touch Landscaping', 'Landscaping', 4.6, 145, '$55-100/hr', '🌺', true, true, '4.7 miles', 'Usually responds in 4 hours', 234, 'Garden design, irrigation, maintenance');
+

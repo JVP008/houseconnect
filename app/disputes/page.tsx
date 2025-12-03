@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { supabase } from '@/lib/supabaseClient';
 import { useToast } from '@/components/ui/Toast';
 import DisputeCard from '@/components/disputes/DisputeCard';
@@ -77,6 +78,7 @@ export default function DisputesPage() {
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-12">
+            <Link href="/" className="text-blue-600 hover:underline mb-4 inline-block">&larr; Back to Home</Link>
             <div className="bg-white rounded-2xl shadow-xl p-8">
                 <h2 className="text-2xl font-bold mb-2">Support & Dispute Resolution</h2>
                 <p className="text-gray-500 mb-8">We&apos;re here to help resolve any issues with your bookings</p>

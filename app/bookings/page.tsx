@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import BookingCard from '@/components/bookings/BookingCard';
 import { supabase } from '@/lib/supabaseClient';
 import type { User } from '@supabase/supabase-js';
@@ -70,6 +71,7 @@ export default function BookingsPage() {
 
     return (
         <div className="max-w-5xl mx-auto px-4 py-12">
+            <Link href="/" className="text-blue-600 hover:underline mb-4 inline-block">&larr; Back to Home</Link>
             <h2 className="text-2xl font-bold mb-8">My Bookings</h2>
 
             <div className="flex gap-4 mb-6">

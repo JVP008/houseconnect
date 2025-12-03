@@ -1,5 +1,4 @@
-'use client';
-
+import Link from 'next/link';
 import { Contractor } from '@/types';
 
 interface ContractorCardProps {
@@ -16,7 +15,9 @@ export default function ContractorCard({ contractor, onBook }: ContractorCardPro
                     <div className="flex items-start justify-between">
                         <div>
                             <h3 className="font-bold text-lg flex items-center gap-2">
-                                {contractor.name}
+                                <Link href={`/contractors/${contractor.id}`} className="hover:text-blue-600 transition">
+                                    {contractor.name}
+                                </Link>
                                 {contractor.verified && (
                                     <span className="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full flex items-center">
                                         <i className="fas fa-check-circle mr-1"></i>Verified
@@ -44,7 +45,9 @@ export default function ContractorCard({ contractor, onBook }: ContractorCardPro
                             </span>
                         </div>
                         <div className="flex gap-2">
-                            <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">View Profile</button>
+                            <Link href={`/contractors/${contractor.id}`} className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition inline-block">
+                                View Profile
+                            </Link>
                             <button
                                 onClick={() => onBook(contractor)}
                                 disabled={!contractor.available}
