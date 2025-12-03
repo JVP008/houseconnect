@@ -21,11 +21,11 @@ export default function ServiceCard({ name, icon, color, onClick }: ServiceCardP
     const styles = colorMap[color] || colorMap.blue;
 
     return (
-        <div onClick={() => onClick(name)} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition cursor-pointer text-center card-hover">
-            <div className={`w-16 h-16 ${styles.bg} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                <i className={`fas ${icon} text-2xl ${styles.text}`}></i>
+        <div onClick={() => onClick(name)} className="bg-white p-6 border-3 border-black rounded-xl shadow-[6px_6px_0px_0px_#000] hover:translate-y-[-4px] hover:shadow-[10px_10px_0px_0px_#000] transition-all cursor-pointer text-center group">
+            <div className={`w-20 h-20 ${styles.bg} border-3 border-black rounded-full flex items-center justify-center mx-auto mb-4 shadow-[3px_3px_0px_0px_#000] group-hover:scale-110 transition-transform`}>
+                <i className={`fas ${icon} text-3xl text-black`}></i>
             </div>
-            <h3 className="font-semibold">{name}</h3>
+            <h3 className="font-black text-xl uppercase tracking-wide">{name}</h3>
         </div>
     );
 }

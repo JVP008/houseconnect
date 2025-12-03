@@ -22,7 +22,7 @@ export default function Services() {
 
     return (
         <div className="max-w-7xl mx-auto px-4 py-16">
-            <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
+            <h2 className="text-4xl font-black text-center mb-12 uppercase tracking-wide">Our Services</h2>
             <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
                 {services.map((s) => (
                     <ServiceCard

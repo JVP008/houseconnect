@@ -82,16 +82,18 @@ export default function ContractorList({ initialContractors }: ContractorListPro
     return (
         <div className="flex flex-col md:flex-row gap-8">
             {/* Filters */}
-            <div className="md:w-64 shrink-0">
-                <div className="bg-white rounded-xl shadow-md p-6 sticky top-24">
-                    <h3 className="font-bold text-lg mb-4">Filters</h3>
+            <div className="md:w-72 shrink-0">
+                <div className="bg-white border-3 border-black rounded-xl shadow-[6px_6px_0px_0px_#000] p-6 sticky top-24">
+                    <h3 className="font-black text-xl mb-6 uppercase tracking-wide flex items-center">
+                        <i className="fas fa-filter mr-2"></i> Filters
+                    </h3>
 
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Service Type</label>
+                    <div className="mb-6">
+                        <label className="block text-black font-bold mb-2 uppercase text-sm">Service Type</label>
                         <select
                             value={filters.service}
                             onChange={(e) => handleFilterChange('service', e.target.value)}
-                            className="w-full p-2 border rounded-lg"
+                            className="w-full p-3 bg-white border-2 border-black rounded-lg focus:ring-0 focus:shadow-[4px_4px_0px_0px_#000] transition-all font-bold"
                         >
                             <option value="">All Services</option>
                             <option value="Plumbing">Plumbing</option>
@@ -103,12 +105,12 @@ export default function ContractorList({ initialContractors }: ContractorListPro
                         </select>
                     </div>
 
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Minimum Rating</label>
+                    <div className="mb-6">
+                        <label className="block text-black font-bold mb-2 uppercase text-sm">Minimum Rating</label>
                         <select
                             value={filters.rating}
                             onChange={(e) => handleFilterChange('rating', parseFloat(e.target.value))}
-                            className="w-full p-2 border rounded-lg"
+                            className="w-full p-3 bg-white border-2 border-black rounded-lg focus:ring-0 focus:shadow-[4px_4px_0px_0px_#000] transition-all font-bold"
                         >
                             <option value="0">Any Rating</option>
                             <option value="4.5">4.5+ Stars</option>
@@ -117,41 +119,54 @@ export default function ContractorList({ initialContractors }: ContractorListPro
                         </select>
                     </div>
 
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Availability</label>
-                        <div className="space-y-2">
-                            <label className="flex items-center">
+                    <div className="mb-6">
+                        <label className="block text-black font-bold mb-2 uppercase text-sm">Availability</label>
+                        <div className="space-y-3">
+                            <label className="flex items-center cursor-pointer group">
+                                <div className={`w-6 h-6 border-2 border-black rounded flex items-center justify-center mr-3 transition-all ${filters.available ? 'bg-green-400 shadow-[2px_2px_0px_0px_#000]' : 'bg-white group-hover:bg-gray-100'}`}>
+                                    {filters.available && <i className="fas fa-check text-black text-xs"></i>}
+                                </div>
                                 <input
                                     type="checkbox"
                                     checked={filters.available}
                                     onChange={(e) => handleFilterChange('available', e.target.checked)}
-                                    className="mr-2"
+                                    className="hidden"
                                 />
-                                <span className="text-sm">Available Now</span>
+                                <span className="text-black font-bold">Available Now</span>
                             </label>
-                            <label className="flex items-center">
+                            <label className="flex items-center cursor-pointer group">
+                                <div className={`w-6 h-6 border-2 border-black rounded flex items-center justify-center mr-3 transition-all ${filters.verified ? 'bg-blue-400 shadow-[2px_2px_0px_0px_#000]' : 'bg-white group-hover:bg-gray-100'}`}>
+                                    {filters.verified && <i className="fas fa-check text-black text-xs"></i>}
+                                </div>
                                 <input
                                     type="checkbox"
                                     checked={filters.verified}
                                     onChange={(e) => handleFilterChange('verified', e.target.checked)}
-                                    className="mr-2"
+                                    className="hidden"
                                 />
-                                <span className="text-sm">Verified Pro</span>
+                                <span className="text-black font-bold">Verified Pro</span>
                             </label>
                         </div>
                     </div>
 
-                    <button onClick={resetFilters} className="w-full text-blue-600 py-2 text-sm hover:underline">Reset Filters</button>
+                    <button
+                        onClick={resetFilters}
+                        className="w-full bg-red-200 text-black border-2 border-black py-2 rounded-lg font-bold shadow-[2px_2px_0px_0px_#000] hover:translate-y-[-1px] hover:shadow-[3px_3px_0px_0px_#000] hover:bg-red-300 transition-all uppercase text-sm"
+                    >
+                        Reset Filters
+                    </button>
                 </div>
             </div>
 
             {/* Contractor List */}
             <div className="flex-1">
-                <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-2xl font-bold">Available Contractors</h2>
-                    <span className="text-gray-500">{contractors.length} pros found</span>
+                <div className="flex items-center justify-between mb-8 bg-yellow-100 border-3 border-black p-4 rounded-xl shadow-[4px_4px_0px_0px_#000]">
+                    <h2 className="text-2xl font-black uppercase tracking-wide">Available Contractors</h2>
+                    <span className="bg-black text-white px-3 py-1 rounded font-bold border-2 border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]">
+                        {contractors.length} PROS
+                    </span>
                 </div>
-                <div className="grid gap-6">
+                <div className="grid gap-8">
                     {contractors.map((c) => (
                         <ContractorCard key={c.id} contractor={c} onBook={handleBook} />
                     ))}
@@ -163,34 +178,34 @@ export default function ContractorList({ initialContractors }: ContractorListPro
                 onClose={() => setIsScheduleModalOpen(false)}
                 title="Schedule Appointment"
             >
-                <div className="flex items-center mb-6 pb-6 border-b">
-                    <div className="text-4xl mr-4">{selectedContractor?.image}</div>
+                <div className="flex items-center mb-6 pb-6 border-b-2 border-dashed border-gray-300">
+                    <div className="text-5xl mr-4 filter drop-shadow-[2px_2px_0px_rgba(0,0,0,0.2)]">{selectedContractor?.image}</div>
                     <div>
-                        <h4 className="font-bold text-lg">{selectedContractor?.name}</h4>
-                        <p className="text-gray-500">{selectedContractor?.service} • {selectedContractor?.price}</p>
+                        <h4 className="font-black text-xl">{selectedContractor?.name}</h4>
+                        <p className="text-black font-medium">{selectedContractor?.service} • {selectedContractor?.price}</p>
                     </div>
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-medium mb-2">Select Date</label>
+                    <label className="block text-black font-black mb-2 uppercase">Select Date</label>
                     <input
                         type="date"
                         value={bookingDate}
                         onChange={(e) => setBookingDate(e.target.value)}
                         min={new Date().toISOString().split('T')[0]}
-                        className="w-full p-3 border border-gray-300 rounded-lg text-gray-900 bg-white"
+                        className="w-full p-3 bg-white border-3 border-black rounded-lg focus:ring-0 focus:shadow-[4px_4px_0px_0px_#000] transition-all font-bold"
                         style={{ colorScheme: 'light' }}
                     />
                 </div>
 
                 <div className="mb-6">
-                    <label className="block text-gray-700 font-medium mb-2">Select Time Slot</label>
+                    <label className="block text-black font-black mb-2 uppercase">Select Time Slot</label>
                     <div className="grid grid-cols-3 gap-2">
                         {['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'].map((slot) => (
                             <button
                                 key={slot}
                                 onClick={() => setBookingTime(slot)}
-                                className={`p-2 text-sm border rounded-lg ${bookingTime === slot ? 'border-blue-500 bg-blue-50' : 'hover:border-blue-500 hover:bg-blue-50'}`}
+                                className={`p-2 text-sm border-2 border-black rounded-lg font-bold transition-all ${bookingTime === slot ? 'bg-blue-400 text-black shadow-[2px_2px_0px_0px_#000]' : 'bg-white hover:bg-gray-50'}`}
                             >
                                 {slot}
                             </button>
@@ -200,7 +215,7 @@ export default function ContractorList({ initialContractors }: ContractorListPro
 
                 <button
                     onClick={confirmBooking}
-                    className="w-full bg-blue-600 text-white py-4 rounded-xl font-semibold hover:bg-blue-700 transition"
+                    className="w-full bg-green-400 text-black border-3 border-black py-4 rounded-lg font-black shadow-[4px_4px_0px_0px_#000] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_#000] hover:bg-green-500 transition-all text-xl uppercase"
                 >
                     Confirm Booking
                 </button>

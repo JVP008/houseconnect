@@ -8,50 +8,50 @@ interface ContractorCardProps {
 
 export default function ContractorCard({ contractor, onBook }: ContractorCardProps) {
     return (
-        <div className="bg-white rounded-xl shadow-md p-6 card-hover transition">
+        <div className="bg-white border-3 border-black rounded-xl shadow-[6px_6px_0px_0px_#000] p-6 hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_#000] transition-all">
             <div className="flex items-start gap-4">
-                <div className="text-5xl">{contractor.image}</div>
+                <div className="text-5xl filter drop-shadow-[2px_2px_0px_rgba(0,0,0,0.2)]">{contractor.image}</div>
                 <div className="flex-1">
                     <div className="flex items-start justify-between">
                         <div>
-                            <h3 className="font-bold text-lg flex items-center gap-2">
-                                <Link href={`/contractors/${contractor.id}`} className="hover:text-blue-600 transition">
+                            <h3 className="font-black text-xl flex items-center gap-2">
+                                <Link href={`/contractors/${contractor.id}`} className="hover:text-blue-600 transition underline decoration-2 decoration-black underline-offset-2">
                                     {contractor.name}
                                 </Link>
                                 {contractor.verified && (
-                                    <span className="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full flex items-center">
+                                    <span className="bg-blue-200 text-black border-2 border-black text-xs px-2 py-1 rounded font-bold flex items-center shadow-[2px_2px_0px_0px_#000]">
                                         <i className="fas fa-check-circle mr-1"></i>Verified
                                     </span>
                                 )}
                             </h3>
-                            <p className="text-gray-500 text-sm">{contractor.service} • {contractor.location}</p>
+                            <p className="text-black font-medium text-sm mt-1">{contractor.service} • {contractor.location}</p>
                         </div>
                         <div className="text-right">
-                            <div className="flex items-center text-yellow-500 justify-end">
-                                <i className="fas fa-star mr-1"></i>
-                                <span className="font-bold text-gray-800">{contractor.rating}</span>
-                                <span className="text-gray-400 text-sm ml-1">({contractor.reviews})</span>
+                            <div className="flex items-center text-yellow-400 justify-end drop-shadow-[1px_1px_0px_#000]">
+                                <i className="fas fa-star mr-1 text-lg"></i>
+                                <span className="font-black text-black text-lg">{contractor.rating}</span>
+                                <span className="text-gray-600 text-sm ml-1 font-bold">({contractor.reviews})</span>
                             </div>
-                            <p className="text-sm text-gray-500">{contractor.completed_jobs} jobs</p>
+                            <p className="text-sm text-black font-bold">{contractor.completed_jobs} jobs</p>
                         </div>
                     </div>
-                    <p className="text-gray-600 mt-2">{contractor.description}</p>
-                    <div className="flex items-center justify-between mt-4">
+                    <p className="text-gray-800 mt-3 font-medium leading-relaxed">{contractor.description}</p>
+                    <div className="flex items-center justify-between mt-6">
                         <div className="flex items-center gap-4">
-                            <span className="text-blue-600 font-semibold">{contractor.price}</span>
-                            <span className={`flex items-center ${contractor.available ? 'text-green-600' : 'text-gray-400'}`}>
-                                <span className={`w-2 h-2 rounded-full ${contractor.available ? 'bg-green-500 pulse-dot' : 'bg-gray-400'} mr-2`}></span>
+                            <span className="text-black font-black text-lg bg-yellow-200 px-2 py-1 border-2 border-black rounded shadow-[2px_2px_0px_0px_#000]">{contractor.price}</span>
+                            <span className={`flex items-center font-bold border-2 border-black px-2 py-1 rounded shadow-[2px_2px_0px_0px_#000] ${contractor.available ? 'bg-green-200 text-black' : 'bg-gray-200 text-gray-600'}`}>
+                                <span className={`w-3 h-3 rounded-full border-2 border-black ${contractor.available ? 'bg-green-500' : 'bg-gray-400'} mr-2`}></span>
                                 {contractor.available ? 'Available' : 'Busy'}
                             </span>
                         </div>
-                        <div className="flex gap-2">
-                            <Link href={`/contractors/${contractor.id}`} className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition inline-block">
+                        <div className="flex gap-3">
+                            <Link href={`/contractors/${contractor.id}`} className="px-4 py-2 bg-white border-2 border-black text-black font-bold rounded-lg shadow-[3px_3px_0px_0px_#000] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_0px_#000] hover:bg-gray-50 transition-all inline-block">
                                 View Profile
                             </Link>
                             <button
                                 onClick={() => onBook(contractor)}
                                 disabled={!contractor.available}
-                                className={`px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition ${!contractor.available ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                className={`px-4 py-2 bg-blue-400 border-2 border-black text-black font-bold rounded-lg shadow-[3px_3px_0px_0px_#000] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_0px_#000] hover:bg-blue-500 transition-all ${!contractor.available ? 'opacity-50 cursor-not-allowed' : ''}`}
                             >
                                 Book Now
                             </button>

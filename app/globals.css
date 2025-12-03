@@ -1,62 +1,101 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9fafb; /* bg-gray-50 */
-  --foreground: #171717;
+  --background: #fffdf5;
+  /* Light yellow paper look */
+  --foreground: #000000;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-patrick), cursive, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
 
-/* Custom Utilities from HTML */
-.gradient-bg {
-  background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #3b82f6 100%);
+/* Sketch Theme Utilities */
+.sketch-border {
+  border: 3px solid #000;
 }
 
-.card-hover {
-  transition: all 0.3s ease;
+.sketch-shadow {
+  box-shadow: 4px 4px 0px 0px #000;
 }
 
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+.sketch-shadow-sm {
+  box-shadow: 2px 2px 0px 0px #000;
 }
 
+.sketch-shadow-lg {
+  box-shadow: 8px 8px 0px 0px #000;
+}
+
+.sketch-card {
+  background-color: white;
+  border: 3px solid #000;
+  box-shadow: 6px 6px 0px 0px #000;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.sketch-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px 0px #000;
+}
+
+.sketch-button {
+  background-color: white;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0px 0px #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.1s;
+  border-radius: 0.375rem;
+}
+
+.sketch-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #000;
+  background-color: #fef08a;
+  /* yellow-200 */
+}
+
+.sketch-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #000;
+}
+
+.sketch-input {
+  border: 3px solid #000;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.sketch-input:focus {
+  outline: none;
+  box-shadow: 4px 4px 0px 0px #000;
+}
+
+/* Animations */
 .pulse-dot {
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
 
-.ai-typing::after {
-  content: '|';
-  animation: blink 1s infinite;
-}
+  0%,
+  100% {
+    opacity: 1;
+  }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.match-animation {
-  animation: matchPop 0.5s ease-out forwards;
-  opacity: 0;
-}
-
-@keyframes matchPop {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  50% {
+    opacity: 0.5;
+  }
 }
