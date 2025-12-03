@@ -1,3 +1,6 @@
+'use client';
+
+import { memo } from 'react';
 import Link from 'next/link';
 import { Contractor } from '@/types';
 
@@ -6,7 +9,7 @@ interface ContractorCardProps {
     onBook: (contractor: Contractor) => void;
 }
 
-export default function ContractorCard({ contractor, onBook }: ContractorCardProps) {
+const ContractorCard = memo(({ contractor, onBook }: ContractorCardProps) => {
     return (
         <div className="bg-white border-3 border-black rounded-xl shadow-[6px_6px_0px_0px_#000] p-6 hover:translate-y-[-2px] hover:shadow-[8px_8px_0px_0px_#000] transition-all">
             <div className="flex items-start gap-4">
@@ -61,4 +64,8 @@ export default function ContractorCard({ contractor, onBook }: ContractorCardPro
             </div>
         </div>
     );
-}
+});
+
+ContractorCard.displayName = 'ContractorCard';
+
+export default ContractorCard;

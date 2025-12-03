@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import ContractorCard from './ContractorCard';
 import Modal from '@/components/ui/Modal';
 import { useToast } from '@/components/ui/Toast';
@@ -30,30 +30,29 @@ export default function ContractorList({ initialContractors }: ContractorListPro
     const { showToast } = useToast();
     const router = useRouter();
 
-    const handleFilterChange = (key: string, value: string | number | boolean) => {
-        const newFilters = { ...filters, [key]: value };
-        setFilters(newFilters);
+    const handleFilterChange = useCallback((key: string, value: string | number | boolean) => {
+        setFilters(prev => ({ ...prev, [key]: value }));
+    }, []);
 
-        // Client-side filtering for now, could be server-side
-        const filtered = initialContractors.filter(c => {
-            if (newFilters.service && c.service !== newFilters.service) return false;
-            if (c.rating < newFilters.rating) return false;
-            if (newFilters.available && !c.available) return false;
-            if (newFilters.verified && !c.verified) return false;
+    const filteredContractors = useMemo(() => {
+        return contractors.filter(c => {
+            if (filters.service && c.service !== filters.service) return false;
+            if (c.rating < filters.rating) return false;
+            if (filters.available && !c.available) return false;
+            if (filters.verified && !c.verified) return false;
             return true;
         });
-        setContractors(filtered);
-    };
+    }, [contractors, filters]);
 
-    const resetFilters = () => {
+    const resetFilters = useCallback(() => {
         setFilters({ service: '', rating: 0, available: false, verified: false });
         setContractors(initialContractors);
-    };
+    }, [initialContractors]);
 
-    const handleBook = (contractor: Contractor) => {
+    const handleBook = useCallback((contractor: Contractor) => {
         setSelectedContractor(contractor);
         setIsScheduleModalOpen(true);
-    };
+    }, []);
 
     const confirmBooking = async () => {
         if (!bookingDate || !bookingTime || !selectedContractor) {
@@ -163,11 +162,11 @@ export default function ContractorList({ initialContractors }: ContractorListPro
                 <div className="flex items-center justify-between mb-8 bg-yellow-100 border-3 border-black p-4 rounded-xl shadow-[4px_4px_0px_0px_#000]">
                     <h2 className="text-2xl font-black uppercase tracking-wide">Available Contractors</h2>
                     <span className="bg-black text-white px-3 py-1 rounded font-bold border-2 border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]">
-                        {contractors.length} PROS
+                        {filteredContractors.length} PROS
                     </span>
                 </div>
                 <div className="grid gap-8">
-                    {contractors.map((c) => (
+                    {filteredContractors.map((c) => (
                         <ContractorCard key={c.id} contractor={c} onBook={handleBook} />
                     ))}
                 </div>

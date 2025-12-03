@@ -1,5 +1,7 @@
 'use client';
 
+import { memo } from 'react';
+
 interface ServiceCardProps {
     name: string;
     icon: string;
@@ -7,7 +9,7 @@ interface ServiceCardProps {
     onClick: (name: string) => void;
 }
 
-export default function ServiceCard({ name, icon, color, onClick }: ServiceCardProps) {
+const ServiceCard = memo(({ name, icon, color, onClick }: ServiceCardProps) => {
     // Map color names to Tailwind classes for bg and text
     const colorMap: Record<string, { bg: string, text: string }> = {
         blue: { bg: 'bg-blue-100', text: 'text-blue-600' },
@@ -28,4 +30,8 @@ export default function ServiceCard({ name, icon, color, onClick }: ServiceCardP
             <h3 className="font-black text-xl uppercase tracking-wide">{name}</h3>
         </div>
     );
-}
+});
+
+ServiceCard.displayName = 'ServiceCard';
+
+export default ServiceCard;

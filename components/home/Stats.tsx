@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 
-export default function Stats() {
+const Stats = memo(() => {
     const [stats, setStats] = useState({
         contractors: 0,
         jobs: 0,
@@ -54,4 +54,8 @@ export default function Stats() {
             </div>
         </div>
     );
-}
+});
+
+Stats.displayName = 'Stats';
+
+export default Stats;

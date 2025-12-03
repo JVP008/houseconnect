@@ -1,8 +1,9 @@
 'use client';
 
+import { memo } from 'react';
 import Link from 'next/link';
 
-export default function Hero() {
+const Hero = memo(() => {
     return (
         <div className="bg-blue-100 border-b-4 border-black py-20">
             <div className="max-w-7xl mx-auto px-4 text-center">
@@ -21,4 +22,8 @@ export default function Hero() {
             </div>
         </div>
     );
-}
+});
+
+Hero.displayName = 'Hero';
+
+export default Hero;
