@@ -20,12 +20,13 @@ export default function Stats() {
             // but for now we'll use the contractors table average rating.
             const { data: contractors } = await supabase.from('contractors').select('rating');
             const avgRating = (contractors || []).reduce((acc, c) => acc + (c.rating || 0), 0) / ((contractors || []).length || 1);
+            const calculatedSatisfaction = contractors && contractors.length > 0 ? Math.round((avgRating / 5) * 100) : 0;
 
             setStats({
                 contractors: contractorCount || 0,
                 jobs: jobCount || 0,
                 rating: avgRating || 0,
-                satisfaction: 98 // Hardcoded for demo vibe
+                satisfaction: calculatedSatisfaction
             });
         };
         fetchStats();
