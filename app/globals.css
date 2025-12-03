@@ -99,3 +99,66 @@ body {
     opacity: 0.5;
   }
 }
+
+@keyframes wiggle {
+
+  0%,
+  100% {
+    transform: rotate(-1deg);
+  }
+
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-wiggle:hover {
+  animation: wiggle 0.3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pop:active {
+  animation: pop 0.2s ease-in-out;
+}
+
+/* Update Sketch Utilities to use animations */
+.sketch-button:hover {
+  transform: translate(-2px, -2px) rotate(-1deg);
+  box-shadow: 6px 6px 0px 0px #000;
+  background-color: #fef08a;
+  /* yellow-200 */
+}
+
+.sketch-card:hover {
+  transform: translate(-2px, -2px) rotate(0.5deg);
+  box-shadow: 8px 8px 0px 0px #000;
+}
